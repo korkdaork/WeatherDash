@@ -12,6 +12,7 @@ $(document).ready(function () {
 
     });
 
+    //================================================================ CURRENT WEATHER FUNCTION =======================================================
     function searchWeather(searchCity) {
 
         //Clear out the information in the today DIV - we put it before the rest of code in order to clear out everything prior to attaching.
@@ -141,6 +142,8 @@ $(document).ready(function () {
 
     };
 
+    //============================================================= FORECAST FUNCTION =======================================================================
+
     function getForecast(searchCity) {
         console.log(getForecast)
         var APIKey = "03372b05683f32ca6f14fa043c2663ff"
@@ -164,8 +167,8 @@ $(document).ready(function () {
             //target forcast and insert elements and append a row. >>>>...\"mt-3\"...<<< (the two backslashes allow for scaping and inserting additional class)
             $("#forcast").html("<h4 class\"mt-3\">5-day Forcast: </h4>").append("<div class=\"row\">")
 
-            //append columns throguh a loop w/ variable creation club  //i<response.list.length; i+=8 <Justin's solution.
-            for (var i = 0; i < response.list.length; i++) {
+            //append columns throguh a loop w/ variable creation club  //i<response.list.length; i+=8 <Justin's solution.  Working on other possible solutions.
+            for (var i = 0; i < response.list.length; i += 8) {
 
                 //create column
                 var colEl = $("<div>").addClass("col-md-2")
@@ -205,6 +208,8 @@ $(document).ready(function () {
         });
 
     };
+
+    //=============================================================== SEARCH HISTORY BUTTONS ============================================================
 
     function searchHistory() {
 
