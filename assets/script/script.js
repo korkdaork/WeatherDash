@@ -10,6 +10,17 @@ $(document).ready(function () {
         //call search weather function and pass the search value -- see code above --
         searchWeather(searchValue);
 
+        //adds history search in button format
+        searchHistoryBtn(searchValue);
+
+        // ========================================= Save to Local Storage =============================================================
+
+        //indentify user input
+        const userInput = $(this).siblings("#inputValue").val().trim();
+
+        //save information in local storage
+        localStorage.setItem(searchValue, userInput);
+
     });
 
     //================================================================ CURRENT WEATHER FUNCTION =======================================================
@@ -59,7 +70,7 @@ $(document).ready(function () {
                 var cardBodyEl = $("<div>").addClass("card-body");
 
                 //Adding wind element to the card
-                var windEl = $("<p>").addClass("card-text").text(`Wind Speed: ${wind} mph`);
+                var windEl = $("<p>").addClass("card-text").text(`Wind Speed: ${wind} mps`);
 
                 //Adding humidity element to the card
                 var humidEl = $("<p>").addClass("card-text").text(`Humidity: ${humidity}%`);
@@ -145,9 +156,11 @@ $(document).ready(function () {
     //============================================================= FORECAST FUNCTION =======================================================================
 
     function getForecast(searchCity) {
-        console.log(getForecast)
+
         var APIKey = "03372b05683f32ca6f14fa043c2663ff"
         var queryURLForecast = `http://api.openweathermap.org/data/2.5/forecast?q=${searchCity}&units=imperial&appid=${APIKey}`
+
+        $("#forecast").empty();
 
         // Run AJAX call to the OpenWeatherMap API
         $.ajax({
@@ -157,15 +170,10 @@ $(document).ready(function () {
             // Store all of the retrieved data inside of an object called "response"
         }).then(function (response) {
 
-            // var forecastDay1 = response.
-
-
-
-
             //======================================================= APPENDING FOR THE WIN!1!!11!! ================================================================
 
             //target forcast and insert elements and append a row. >>>>...\"mt-3\"...<<< (the two backslashes allow for scaping and inserting additional class)
-            $("#forcast").html("<h4 class\"mt-3\">5-day Forcast: </h4>").append("<div class=\"row\">")
+            $("#forecast").html("<h3 class\"mt-3\">5-day Forcast: </h3>").append("<div class=\"row\">")
 
             //append columns throguh a loop w/ variable creation club  //i<response.list.length; i+=8 <Justin's solution.  Working on other possible solutions.
             for (var i = 0; i < response.list.length; i += 8) {
@@ -211,8 +219,30 @@ $(document).ready(function () {
 
     //=============================================================== SEARCH HISTORY BUTTONS ============================================================
 
-    function searchHistory() {
+    function searchHistoryBtn(searchValue) {
+
+        // var searchValue = $("#inputValue").val().trim();
+
+        var citySearchBox = $("#city-search-box");
+
+        var cityBtnDivEl = $("<div>").addClass("col-md-3");
+
+        var cityBtnEl = $("<button>").addClass("btn btn-primary btn-lg").text(searchValue);
+
+        $(cityBtnDivEl).append(cityBtnEl);
+
+        $(citySearchBox).append(cityBtnDivEl);
+
+        function getHistoryFromBtn() {
+
+            $(cityBtnEl).on("click" function () {
+
+
+            })
+
+        }
 
     }
+
 
 });
