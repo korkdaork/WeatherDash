@@ -233,16 +233,16 @@ $(document).ready(function () {
 
         $(citySearchBox).append(cityBtnDivEl);
 
-        function getHistoryFromBtn() {
-
-            $(cityBtnEl).on("click" function () {
 
 
-            })
+        $(cityBtnEl).on("click", function () {
 
-        }
+            var getCity = localStorage.getItem(searchValue)
+            searchWeather(getCity);
 
-    }
+        });
+
+    };
 
 
 });
