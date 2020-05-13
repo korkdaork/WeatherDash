@@ -1,5 +1,9 @@
-.card {
-   margin: 1px 1px 1px 1px;
-   float: left;
-   position: relative;
+.cityBtn {
+    margin-top: 2px;
+}
+
+.forecastCard {
+    margin-top: 2px;
+    margin-right: 2px;
+    margin-left: 2px;
 }

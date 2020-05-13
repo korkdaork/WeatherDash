@@ -173,13 +173,13 @@ $(document).ready(function () {
             //======================================================= APPENDING FOR THE WIN!1!!11!! ================================================================
 
             //target forcast and insert elements and append a row. >>>>...\"mt-3\"...<<< (the two backslashes allow for scaping and inserting additional class)
-            $("#forecast").html("<h3 class\"mt-3\">5-day Forcast: </h3>").append("<div class=\"row\">")
+            $("#forecast").html("<h4 class\"mt-3\">5-day Forcast: </h4>").append("<div class=\"row\">")
 
             //append columns throguh a loop w/ variable creation club  //i<response.list.length; i+=8 <Justin's solution.  Working on other possible solutions.
             for (var i = 0; i < response.list.length; i += 8) {
 
                 //create column
-                var colEl = $("<div>").addClass("col-md-2")
+                var colEl = $("<div>").addClass("col-md-2 forecastCard")
 
                 //adding card - div w/ class of card.
                 var cardEl = $("<div>").addClass("card bg-primary text-white");
@@ -225,7 +225,7 @@ $(document).ready(function () {
 
         var citySearchBox = $("#city-search-box");
 
-        var cityBtnDivEl = $("<div>").addClass("col-md-3");
+        var cityBtnDivEl = $("<div>").addClass("col-md-2 cityBtn");
 
         var cityBtnEl = $("<button>").addClass("btn btn-primary btn-lg").text(searchValue);
 
