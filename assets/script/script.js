@@ -33,7 +33,7 @@ $(document).ready(function () {
         var APIKey = "03372b05683f32ca6f14fa043c2663ff";
 
         // Building the URL needed to query the database for city - weather
-        var queryURL = `http://api.openweathermap.org/data/2.5/weather?q=${searchCity}&units=imperial&appid=` + APIKey;
+        var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${searchCity}&units=imperial&appid=` + APIKey;
 
 
 
@@ -111,7 +111,7 @@ $(document).ready(function () {
     function getUVIndex(latitude, longitude) {
 
         var APIKey = "03372b05683f32ca6f14fa043c2663ff"
-        var queryURLUV = `http://api.openweathermap.org/data/2.5/uvi?appid=${APIKey}&lat=${latitude}&lon=${longitude}`
+        var queryURLUV = `https://api.openweathermap.org/data/2.5/uvi?appid=${APIKey}&lat=${latitude}&lon=${longitude}`
 
         // Run AJAX call to the OpenWeatherMap API
         $.ajax({
@@ -158,7 +158,7 @@ $(document).ready(function () {
     function getForecast(searchCity) {
 
         var APIKey = "03372b05683f32ca6f14fa043c2663ff"
-        var queryURLForecast = `http://api.openweathermap.org/data/2.5/forecast?q=${searchCity}&units=imperial&appid=${APIKey}`
+        var queryURLForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${searchCity}&units=imperial&appid=${APIKey}`
 
         $("#forecast").empty();
 
