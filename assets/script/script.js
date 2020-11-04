@@ -2,38 +2,18 @@ $(document).ready(function () {
 
     //onclick search button && keyup function
 
-    //BUTTON CLICK
-    $("#searchBtn").on("click", function () {
+    //COMBINING BUTTON CLICK & KEYDOWN ENTER FUNCTION
 
-        //search input value - originally had var but changed to const
-        const searchValue = $("#inputValue").val().trim();
+    function userSearch(e) {
+        if (e.keyCode == "13") {
+            search();
+        } else if (e.type == "click") {
+            search();
+        };
 
-        //call search weather function and pass the search value -- see code above --
-        searchWeather(searchValue);
+        function search() {
 
-        //adds history search in button format
-        searchHistoryBtn(searchValue);
-
-        // ========================================= Save to Local Storage =============================================================
-
-        //indentify user input
-        const userInput = $(this).siblings("#inputValue").val().trim();
-
-        //save information in local storage
-        localStorage.setItem(searchValue, userInput);
-
-    });
-
-    //KEYDOWN
-    $("#inputValue").keydown(function (e) {
-
-        if (e.keyCode == 13) {
-
-            e.preventDefault();
-
-            //search input value - originally had var but changed to const
             const searchValue = $("#inputValue").val().trim();
-
             //call search weather function and pass the search value -- see code above --
             searchWeather(searchValue);
 
@@ -47,9 +27,13 @@ $(document).ready(function () {
 
             //save information in local storage
             localStorage.setItem(searchValue, userInput);
-        };
-    });
 
+        };
+
+    };
+
+    $("#searchBtn").click(userSearch);
+    $("#inputValue").keydown(userSearch);
 
 
     //================================================================ CURRENT WEATHER FUNCTION =======================================================
