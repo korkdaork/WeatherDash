@@ -1,9 +1,6 @@
 $(document).ready(function () {
 
-    //onclick search button && keyup function
-
-    //COMBINING BUTTON CLICK & KEYDOWN ENTER FUNCTION
-
+    // =================================================== USER SEARCH ========================================================================
     function userSearch(e) {
         if (e.keyCode == "13") {
             search();
@@ -14,18 +11,11 @@ $(document).ready(function () {
         function search() {
 
             const searchValue = $("#inputValue").val().trim();
-            //call search weather function and pass the search value -- see code above --
             searchWeather(searchValue);
-
-            //adds history search in button format
             searchHistoryBtn(searchValue);
 
-            // ========================================= Save to Local Storage =============================================================
-
-            //indentify user input
-            const userInput = $(this).siblings("#inputValue").val().trim();
-
-            //save information in local storage
+            // -------------------------- Save to Local Storage ---------------------------------------
+            const userInput = $(this).siblings("#inputValue").val();
             localStorage.setItem(searchValue, userInput);
 
         };
@@ -242,11 +232,11 @@ $(document).ready(function () {
 
         var cityBtnEl = $("<button>").addClass("btn btn-primary btn-lg").text(searchValue);
 
-        $(cityBtnDivEl).append(cityBtnEl);
+        if (!localStorage.getItem(searchValue)) {
+            $(cityBtnDivEl).append(cityBtnEl);
+        };
 
         $(citySearchBox).append(cityBtnDivEl);
-
-
 
         $(cityBtnEl).on("click", function () {
 
